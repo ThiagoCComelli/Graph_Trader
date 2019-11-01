@@ -24,8 +24,8 @@ class Program():
         self.frame3 = tk.Frame(root, width=640, height=360, bg='red')
         self.frame3.place(x=640, y=360)
 
-        self.photo = PhotoImage(file="images/c0books_read.jpeg")
-        self.backlabel = Label(self.frame0, image=self.photo).place(x=-1, y=-1)
+        # self.photo = PhotoImage(file="images/c0books_read.jpeg")
+        # self.backlabel = Label(self.frame0, image=self.photo).place(x=-1, y=-1)
 
 
 
