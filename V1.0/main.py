@@ -1,5 +1,6 @@
 from tkinter import *
 import tkinter as tk
+from PIL import ImageTk as itk
 
 class Program():
     def __init__(self,master):
@@ -7,13 +8,15 @@ class Program():
         self.screen()
 
     def screen(self):
-        #frame 0 = top-left
-        #frame 1 = top-right
-        #frame 2 = botton-left
-        #frame 3 = botton-right
+        # frame 0 = top-left
+        # frame 1 = top-right
+        # frame 2 = botton-left
+        # frame 3 = botton-right
 
-        self.frame0 = tk.Frame(root, width = 640, height = 360,bg = 'black')
-        self.frame0.place(x=0,y=0)
+        photo = PhotoImage(file = "images/giphy.gif")
+        blacklabel = Label(root, image=photo)
+        blacklabel.pack()
+
 
         self.frame1 = tk.Frame(root, width=640, height=360, bg='yellow')
         self.frame1.place(x=640, y=0)
