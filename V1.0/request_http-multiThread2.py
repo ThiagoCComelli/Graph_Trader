@@ -7,8 +7,6 @@ import threading
 from datetime import datetime
 
 tot = 0
-
-escolhido = None
 ABEV3 = None
 MGLU3 = None
 PETR4 = None
@@ -20,40 +18,20 @@ def gerador(stocks):
     global MGLU3
     global PETR4
     global ITUB4
-    global escolhido
 
     if stocks == "ABEV3":
-        a = ABEV3
+        r = ABEV3
     elif stocks == "MGLU3":
-        m = MGLU3
+        r = MGLU3
     elif stocks == "PETR4":
-        p = PETR4
+        r = PETR4
     elif stocks == "ITUB4":
-        i = ITUB4
+        r = ITUB4
 
-    def socorro(pelamor):
-        global escolhido
-
-        if pelamor == "ABEV3":
-            while escolhido == None:
-                escolhido = a
-            return a
-        elif pelamor == "MGLU3":
-            while escolhido == None:
-                escolhido = m
-            return m
-        elif pelamor == "PETR4":
-            while escolhido == None:
-                escolhido = p
-            return p
-        elif pelamor == "ITUB4":
-            while escolhido == None:
-                escolhido = i
-            return i
-
-    if socorro(stocks) != None:
+    print(stocks)
+    if r != None:
         valor = []
-        data = escolhido.json()
+        data = r.json()
         now = datetime.now()
         timeSeries = data["Time Series (5min)"]
         open = [float(dado["1. open"]) for dado in timeSeries.values()]
@@ -61,8 +39,12 @@ def gerador(stocks):
         # print("gerador =>           " + str(open))
         # print("{} {} {}".format(now.hour,now.minute,now.second))
 
+        for i in range(len(open)):
+            valor.append(i)
+
+
         plt.plot(valor, open[::-1])
-        plt.savefig('images/' + stocks + '.png')
+        plt.savefig('images/' + stocks + str(tot) + '.png')
         plt.show()
 
         tot += 1
