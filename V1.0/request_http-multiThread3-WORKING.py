@@ -7,17 +7,10 @@ import threading
 from datetime import datetime
 
 tot = 0
-ABEV3 = None
-MGLU3 = None
-PETR4 = None
-ITUB4 = None
+ABEV3 = MGLU3 = PETR4 = ITUB4 = None
 
 def gerador():
-    global tot
-    global ABEV3
-    global MGLU3
-    global PETR4
-    global ITUB4
+    global tot, ABEV3, MGLU3, PETR4, ITUB4
 
     while True:
         if (ABEV3 != None) and (MGLU3 != None) and (PETR4 != None) and (ITUB4 != None):
@@ -52,8 +45,6 @@ def gerador():
 
             print("gerador {} =>           ".format(krl) + str(open))
 
-
-
             plt.plot(valor, open[::-1])
             plt.savefig('images/' + krl + '.png')
             plt.show()
@@ -69,15 +60,6 @@ def abev3():
     while True:
         ABEV3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ABEV3.SA&interval=5min&apikey=234234")
 
-        # data = ABEV3.json()
-        # now = datetime.now()
-        #
-        # timeSeries = data["Time Series (5min)"]
-        # open = [float(dado["1. open"]) for dado in timeSeries.values()]
-
-        # print("atualizaRequest =>   " + str(open))
-        # print("{} {} {}".format(now.hour,now.minute,now.second))
-
         time.sleep(295)
 
 def mglu3():
@@ -85,30 +67,12 @@ def mglu3():
     while True:
         MGLU3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MGLU3.SA&interval=5min&apikey=234234")
 
-        # data = MGLU3.json()
-        # now = datetime.now()
-        #
-        # timeSeries = data["Time Series (5min)"]
-        # open = [float(dado["1. open"]) for dado in timeSeries.values()]
-
-        # print("atualizaRequest =>   " + str(open))
-        # print("{} {} {}".format(now.hour,now.minute,now.second))
-
         time.sleep(295)
 
 def itub4():
     global ITUB4
     while True:
         ITUB4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ITUB4.SA&interval=5min&apikey=234234")
-        #
-        # data = ITUB4.json()
-        # now = datetime.now()
-        #
-        # timeSeries = data["Time Series (5min)"]
-        # open = [float(dado["1. open"]) for dado in timeSeries.values()]
-        #
-        # print("atualizaRequest =>   " + str(open))
-        # print("{} {} {}".format(now.hour,now.minute,now.second))
 
         time.sleep(295)
 
@@ -116,15 +80,6 @@ def petr4():
     global PETR4
     while True:
         PETR4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=5min&apikey=234234")
-        #
-        # data = PETR4.json()
-        # now = datetime.now()
-        #
-        # timeSeries = data["Time Series (5min)"]
-        # open = [float(dado["1. open"]) for dado in timeSeries.values()]
-        #
-        # print("atualizaRequest =>   " + str(open))
-        # print("{} {} {}".format(now.hour,now.minute,now.second))
 
         time.sleep(295)
 
