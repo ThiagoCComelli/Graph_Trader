@@ -54,48 +54,34 @@ def gerador():
 
     time.sleep(300)
 
-def abev3():
-    global ABEV3
+def atualiza(stonks):
+    global ABEV3, MGLU3, PETR4, ITUB4
 
     while True:
-        ABEV3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ABEV3.SA&interval=5min&apikey=234234")
+        if stonks == "ABEV3":
+            ABEV3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ABEV3.SA&interval=5min&apikey=234234")
+        elif stonks == "MGLU3":
+            MGLU3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MGLU3.SA&interval=5min&apikey=234234")
+        elif stonks == "ITUB4":
+            ITUB4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ITUB4.SA&interval=5min&apikey=234234")
+        elif stonks == "PETR4":
+            PETR4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=5min&apikey=234234")
 
         time.sleep(295)
 
-def mglu3():
-    global MGLU3
-    while True:
-        MGLU3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MGLU3.SA&interval=5min&apikey=234234")
 
-        time.sleep(295)
+thread1 = threading.Thread(target=atualiza,args=("ABEV3",))
+thread1.start()
 
-def itub4():
-    global ITUB4
-    while True:
-        ITUB4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ITUB4.SA&interval=5min&apikey=234234")
+thread2 = threading.Thread(target=atualiza,args=("MGLU3",))
+thread2.start()
 
-        time.sleep(295)
+thread3 = threading.Thread(target=atualiza,args=("ITUB4",))
+thread3.start()
 
-def petr4():
-    global PETR4
-    while True:
-        PETR4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=5min&apikey=234234")
-
-        time.sleep(295)
+thread4 = threading.Thread(target=atualiza,args=("PETR4",))
+thread4.start()
 
 thread5 = threading.Thread(target=gerador)
 thread5.start()
-
-thread1 = threading.Thread(target=abev3)
-thread1.start()
-
-thread2 = threading.Thread(target=mglu3)
-thread2.start()
-
-thread3 = threading.Thread(target=petr4)
-thread3.start()
-
-thread4 = threading.Thread(target=itub4)
-thread4.start()
-
 
