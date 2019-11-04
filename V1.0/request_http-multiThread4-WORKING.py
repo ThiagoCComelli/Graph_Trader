@@ -61,6 +61,9 @@ def gerador():
                 ITUB4 = None
         break
 
+    for i in lista:
+        i = None
+
     time.sleep(300)
 
 def abev3():
