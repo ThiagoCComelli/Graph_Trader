@@ -55,7 +55,6 @@ def gerador():
             break
 
         ABEV3 = MGLU3 = PETR4 = ITUB4 = None
-        lista = []
 
 def atualiza(stonks):
     global ABEV3, MGLU3, PETR4, ITUB4
