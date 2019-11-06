@@ -27,7 +27,7 @@ def gerador():
             valor.append(i)
 
         plt.plot(valor,open[::-1])
-        plt.savefig('images/'+'c'+str(tot)+'books_read.png')
+        plt.savefig('images/'+'c'+str(tot)+'books_read.jpeg')
         plt.show()
 
         tot += 1

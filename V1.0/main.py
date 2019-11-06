@@ -1,8 +1,12 @@
 from tkinter import *
 import tkinter as tk
+<<<<<<< HEAD
 import time
 import threading
 from PIL import Image, ImageTk
+=======
+from PIL import ImageTk,Image
+>>>>>>> origin/master
 
 class Program():
     def __init__(self,master):
@@ -53,7 +57,12 @@ class Program():
         metrPETR4 = tk.IntVar()
 
 
+<<<<<<< HEAD
         stocks = [("Médias Móveis", 1), ("Volume", 2), ("Banda de Bollinger", 3), ("Fechamento", 4), ("Sem indicador", 5)]
+=======
+        self.photo = PhotoImage(file="images/c0books_read.jpeg")
+        self.backlabel = Label(self.frame0, image=self.photo).place(x=-1, y=-1)
+>>>>>>> origin/master
 
         # metricas ABEV3
         tk.Radiobutton(root, text="Médias Móveis             ", padx=0, variable=metrABEV3, value=1, bg="white").place(x=39, y=596)

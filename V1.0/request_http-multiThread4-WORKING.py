@@ -50,7 +50,19 @@ def gerador():
             plt.show()
 
             tot += 1
+
+            if lista.index(i) == 0:
+                ABEV3 = None
+            elif lista.index(i) == 1:
+                MGLU3 = None
+            elif lista.index(i) == 2:
+                PETR4 = None
+            else:
+                ITUB4 = None
         break
+
+    for i in lista:
+        i = None
 
     time.sleep(300)
 
