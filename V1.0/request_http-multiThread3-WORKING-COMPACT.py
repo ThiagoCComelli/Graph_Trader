@@ -48,7 +48,7 @@ def gerador():
                 print("gerador {} =>           ".format(krl) + str(open))
 
                 plt.plot(valor, open[::-1])
-                plt.savefig('images/' + krl + "_" + str(tot) +'.png')
+                plt.savefig('images/' + krl + "_" + str(tot) + '_' + str(tot) + '.png')
                 plt.show()
 
                 tot += 1
