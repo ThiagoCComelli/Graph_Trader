@@ -10,19 +10,25 @@ from request_http_multiThread3_WORKING_COMPACT import *
 root = None
 rootTroca = None
 
+abev3 = itub4 = mglu3 = petr4 = "sem id"
+
 class Program():
     def __init__(self,master):
         self.root = root.geometry("1280x720"), root.resizable(width=False, height=False)
         self.screen()
 
     def screen(self):
+        global abev3,itub4,mglu3,petr4
         # frame 0 = top-left
         # frame 1 = top-right
         # frame 2 = botton-left
         # frame 3 = botton-right
 
         root.configure(background="white")
-        self.atualizaGrafico()
+        self.atualizaGraficoABEV3(abev3)
+        self.atualizaGraficoPETR4(itub4)
+        self.atualizaGraficoITUB4(mglu3)
+        self.atualizaGraficoMGLU3(petr4)
         # load1 = Image.open("images/ABEV3.png")
         # load2 = Image.open("images/ITUB4.png")
         # load3 = Image.open("images/MGLU3.png")
@@ -91,11 +97,8 @@ class Program():
         tk.Radiobutton(root, text="Volume                         ", padx=0, variable=metrITUB4, value=2, bg="white").place(x=672, y=618)
         tk.Radiobutton(root, text="Banda de Bollinger       ", padx=0, variable=metrITUB4, value=3, bg="white").place(x=672,y=640)
         tk.Radiobutton(root, text="Fechamento                  ", padx=0, variable=metrITUB4, value=4, bg="white").place(x=672,y=662)
-        tk.Radiobutton(root, text="Sem indicador               ", padx=0,command=atualizaGraficoABEV3("sem id"),variable=metrITUB4, value=5,bg="white").place(x=672, y=684)
+        tk.Radiobutton(root, text="Sem indicador               ", padx=0,variable=metrITUB4, value=5,bg="white").place(x=672, y=684)
 
-        def estado(self,metrica):
-            if metrica == "BB":
-                a = "BBa"
         buyABEV = tk.Button(root, text="COMPRAR ABEV3", width=15, height=0).place(x=870, y=566)
         sellABEV = tk.Button(root, text="VENDER ABEV3", width=15, height=0).place(x=870, y=600)
 
@@ -110,16 +113,21 @@ class Program():
 
 
     def atualizaGraficoABEV3(self,metrica):
+        global abev3
         if metrica == "sem id":
             abev3 = "sem id"
             load = Image.open("images/ABEV3.png")
-        elif metrica == "bb":
+        elif metrica == "boolinger":
+            abev3 = "boolinger"
             load = Image.open("images/ABEV3.png")
         elif metrica == "volume":
+            abev3 = "volume"
             load = Image.open("images/ABEV3.png")
         elif metrica == "fechamento":
+            abev3 = "fechamento"
             load = Image.open("images/ABEV3.png")
-        elif metrica == "mm":
+        elif metrica == "media":
+            abev3 = "media"
             load = Image.open("images/ABEV3.png")
 
         render = ImageTk.PhotoImage(load)
@@ -128,21 +136,66 @@ class Program():
         graph1.place(x=39, y=-25)
 
     def atualizaGraficoITUB4(self, metrica):
-        load2 = Image.open("images/ITUB4.png")
+        global itub4
+        if metrica == "sem id":
+            itub4 = "sem id"
+            load2 = Image.open("images/ITUB4.png")
+        elif metrica == "boolinger":
+            itub4 = "boolinger"
+            load2 = Image.open("images/ITUB4.png")
+        elif metrica == "volume":
+            itub4 = "volume"
+            load2 = Image.open("images/ITUB4.png")
+        elif metrica == "fechamento":
+            itub4 = "fechamento"
+            load2 = Image.open("images/ITUB4.png")
+        elif metrica == "media":
+            itub4 = "media"
+            load2 = Image.open("images/ITUB4.png")
         render = ImageTk.PhotoImage(load2)
         graph1 = Label(root, image=render)
         graph1.image = render
         graph1.place(x=639, y=-25)
 
     def atualizaGraficoMGLU3(self, metrica):
-        load3 = Image.open("images/MGLU3.png")
+        global mglu3
+        if metrica == "sem id":
+            mglu3 = "sem id"
+            load3 = Image.open("images/MGLU3.png")
+        elif metrica == "boolinger":
+            mglu3 = "boolinger"
+            load3 = Image.open("images/MGLU3.png")
+        elif metrica == "volume":
+            mglu3 = "volume"
+            load3 = Image.open("images/MGLU3.png")
+        elif metrica == "fechamento":
+            mglu3 = "fechamento"
+            load3 = Image.open("images/MGLU3.png")
+        elif metrica == "media":
+            mglu3 = "media"
+            load3 = Image.open("images/MGLU3.png")
         render = ImageTk.PhotoImage(load3)
         graph1 = Label(root, image=render)
         graph1.image = render
         graph1.place(x=39, y=261)
 
     def atualizaGraficoPETR4(self, metrica):
-        load4 = Image.open("images/PETR4.png")
+        global petr4
+        if metrica == "sem id":
+            petr4 = "sem id"
+            load4 = Image.open("images/PETR4.png")
+        elif metrica == "bb":
+            petr4 = "boolinger"
+            load4 = Image.open("images/PETR4.png")
+        elif metrica == "volume":
+            petr4 = "volume"
+            load4 = Image.open("images/PETR4.png")
+        elif metrica == "fechamento":
+            petr4 = "fechamento"
+            load4 = Image.open("images/PETR4.png")
+        elif metrica == "media":
+            petr4 = "media"
+            load4 = Image.open("images/PETR4.png")
         render = ImageTk.PhotoImage(load4)
         graph1 = Label(root, image=render)
         graph1.image = render
@@ -153,7 +206,7 @@ def iniciar():
     global rootTroca
     global ABEV3, MGLU3, PETR4, ITUB4
 
-    time.sleep(7)
+    time.sleep(10)
 
     root = tk.Tk()
     Program(root)
@@ -163,13 +216,14 @@ def iniciar():
 
 def atualizaOsTreco():
     global rootTroca
+    global abev3, itub4, mglu3, petr4
 
     while True:
         if rootTroca != None:
             rootTroca.atualizaGraficoABEV3(abev3)
             rootTroca.atualizaGraficoMGLU3(mglu3)
             rootTroca.atualizaGraficoPETR4(petr4)
-            rootTroca.atualizaGraficoITUB4(it)
+            rootTroca.atualizaGraficoITUB4(itub4)
             time.sleep(300)
 
 

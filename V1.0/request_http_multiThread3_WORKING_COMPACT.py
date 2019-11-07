@@ -8,7 +8,6 @@ from datetime import datetime
 
 tot = 0
 ABEV3 = MGLU3 = PETR4 = ITUB4 = None
-ABEV3T = MGLU3T = PETR4T = ITUB4T = None
 
 def gerador():
     while True:
@@ -33,6 +32,9 @@ def gerador():
                 timeSeries = data['Time Series (5min)']
                 # END OF DANGER ZONE - WARNING
 
+                open = [float(dado["1. open"]) for dado in timeSeries.values()]
+                open = [float(dado["1. open"]) for dado in timeSeries.values()]
+                open = [float(dado["1. open"]) for dado in timeSeries.values()]
                 open = [float(dado["1. open"]) for dado in timeSeries.values()]
 
                 for u in range(len(open)):
@@ -61,7 +63,6 @@ def gerador():
 
 def atualiza(stonks):
     global ABEV3, MGLU3, PETR4, ITUB4
-    global ABEV3T, MGLU3T, PETR4T, ITUB4T
 
     while True:
         if stonks == "ABEV3":
