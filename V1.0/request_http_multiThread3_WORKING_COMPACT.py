@@ -12,7 +12,6 @@ ABEV3 = MGLU3 = PETR4 = ITUB4 = None
 def gerador():
     while True:
         global tot, ABEV3, MGLU3, PETR4, ITUB4
-        global ABEV3T, MGLU3T, PETR4T, ITUB4T
         lista = []
 
         while True:
@@ -33,30 +32,72 @@ def gerador():
                 # END OF DANGER ZONE - WARNING
 
                 open = [float(dado["1. open"]) for dado in timeSeries.values()]
-                open = [float(dado["1. open"]) for dado in timeSeries.values()]
-                open = [float(dado["1. open"]) for dado in timeSeries.values()]
-                open = [float(dado["1. open"]) for dado in timeSeries.values()]
+                high = [float(dado["2. high"]) for dado in timeSeries.values()]
+                close = [float(dado["4. close"]) for dado in timeSeries.values()]
+                volume = [float(dado["5. volume"]) for dado in timeSeries.values()]
 
                 for u in range(len(open)):
                     valor.append(u)
 
-                if lista.index(i) == 0:
-                    krl = "ABEV3"
-                elif lista.index(i) == 1:
-                    krl = "MGLU3"
-                elif lista.index(i) == 2:
-                    krl = "PETR4"
-                else:
-                    krl = "ITUB4"
-
-                print("gerador {} =>           ".format(krl) + str(open))
-
                 plt.figure(num=None, figsize=(6, 2.85), dpi=100, facecolor='w', edgecolor='k')
-                plt.plot(valor, open[::-1])
-                plt.savefig('images/' + krl + '.png')
-                plt.show()
 
-                tot += 1
+                if lista.index(i) == 0:
+                    stock = "ABEV3"
+                    plt.plot(valor, open[::-1])
+                    plt.savefig('images/ABEV3/' + stock + "open" + '.png')
+                    plt.clf()
+                    plt.plot(valor, high[::-1])
+                    plt.savefig('images/ABEV3/' + stock + "high" + '.png')
+                    plt.clf()
+                    plt.plot(valor, close[::-1])
+                    plt.savefig('images/ABEV3/' + stock + "close" + '.png')
+                    plt.clf()
+                    plt.plot(valor, volume[::-1])
+                    plt.savefig('images/ABEV3/' + stock + "volume" + '.png')
+                    plt.clf()
+                elif lista.index(i) == 1:
+                    stock = "MGLU3"
+                    plt.plot(valor, open[::-1])
+                    plt.savefig('images/MGLU3/' + stock + "open" + '.png')
+                    plt.clf()
+                    plt.plot(valor, high[::-1])
+                    plt.savefig('images/MGLU3/' + stock + "high" + '.png')
+                    plt.clf()
+                    plt.plot(valor, close[::-1])
+                    plt.savefig('images/MGLU3/' + stock + "close" + '.png')
+                    plt.clf()
+                    plt.plot(valor, volume[::-1])
+                    plt.savefig('images/MGLU3/' + stock + "volume" + '.png')
+                    plt.clf()
+                elif lista.index(i) == 2:
+                    stock = "PETR4"
+                    plt.plot(valor, open[::-1])
+                    plt.savefig('images/PETR4/' + stock + "open" + '.png')
+                    plt.clf()
+                    plt.plot(valor, high[::-1])
+                    plt.savefig('images/PETR4/' + stock + "high" + '.png')
+                    plt.clf()
+                    plt.plot(valor, close[::-1])
+                    plt.savefig('images/PETR4/' + stock + "close" + '.png')
+                    plt.clf()
+                    plt.plot(valor, volume[::-1])
+                    plt.savefig('images/PETR4/' + stock + "volume" + '.png')
+                    plt.clf()
+                else:
+                    stock = "ITUB4"
+                    plt.plot(valor, open[::-1])
+                    plt.savefig('images/ITUB4/' + stock + "open" + '.png')
+                    plt.clf()
+                    plt.plot(valor, high[::-1])
+                    plt.savefig('images/ITUB4/' + stock + "high" + '.png')
+                    plt.clf()
+                    plt.plot(valor, close[::-1])
+                    plt.savefig('images/ITUB4/' + stock + "close" + '.png')
+                    plt.clf()
+                    plt.plot(valor, volume[::-1])
+                    plt.savefig('images/ITUB4/' + stock + "volume" + '.png')
+                    plt.clf()
+
             break
 
         ABEV3 = MGLU3 = PETR4 = ITUB4 = None
@@ -68,20 +109,17 @@ def atualiza(stonks):
         if stonks == "ABEV3":
             if ABEV3 == None:
                 ABEV3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ABEV3.SA&interval=5min&apikey=234234")
-                ABEV3T = ABEV3
         elif stonks == "MGLU3":
             if MGLU3 == None:
                 MGLU3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MGLU3.SA&interval=5min&apikey=234234")
-                MGLU3T = MGLU3
         elif stonks == "ITUB4":
             if ITUB4 == None:
                 ITUB4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ITUB4.SA&interval=5min&apikey=234234")
-                ITUB4T = ITUB4
         elif stonks == "PETR4":
-            if ITUB4 == None:
+            if PETR4 == None:
                 PETR4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=5min&apikey=234234")
-                PETR4T = PETR4
         if (ABEV3 != None) and (MGLU3 != None) and (PETR4 != None) and (ITUB4 != None):
+            print("SUCCESS")
             time.sleep(295)
 
 # def queroDormir():
