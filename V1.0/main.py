@@ -91,7 +91,7 @@ class Program():
         tk.Radiobutton(root, text="Volume                         ", padx=0, variable=metrITUB4, value=2, bg="white").place(x=672, y=618)
         tk.Radiobutton(root, text="Banda de Bollinger       ", padx=0, variable=metrITUB4, value=3, bg="white").place(x=672,y=640)
         tk.Radiobutton(root, text="Fechamento                  ", padx=0, variable=metrITUB4, value=4, bg="white").place(x=672,y=662)
-        tk.Radiobutton(root, text="Sem indicador               ", padx=0,command=estado("sem metrica") variable=metrITUB4, value=5,bg="white").place(x=672, y=684)
+        tk.Radiobutton(root, text="Sem indicador               ", padx=0,command=atualizaGraficoABEV3("sem id"),variable=metrITUB4, value=5,bg="white").place(x=672, y=684)
 
         def estado(self,metrica):
             if metrica == "BB":
@@ -110,11 +110,22 @@ class Program():
 
 
     def atualizaGraficoABEV3(self,metrica):
+        if metrica == "sem id":
+            abev3 = "sem id"
             load = Image.open("images/ABEV3.png")
-            render = ImageTk.PhotoImage(load)
-            graph1 = Label(root, image=render)
-            graph1.image = render
-            graph1.place(x=39, y=-25)
+        elif metrica == "bb":
+            load = Image.open("images/ABEV3.png")
+        elif metrica == "volume":
+            load = Image.open("images/ABEV3.png")
+        elif metrica == "fechamento":
+            load = Image.open("images/ABEV3.png")
+        elif metrica == "mm":
+            load = Image.open("images/ABEV3.png")
+
+        render = ImageTk.PhotoImage(load)
+        graph1 = Label(root, image=render)
+        graph1.image = render
+        graph1.place(x=39, y=-25)
 
     def atualizaGraficoITUB4(self, metrica):
         load2 = Image.open("images/ITUB4.png")
@@ -142,9 +153,7 @@ def iniciar():
     global rootTroca
     global ABEV3, MGLU3, PETR4, ITUB4
 
-    print("oi")
     time.sleep(7)
-    print("aqui")
 
     root = tk.Tk()
     Program(root)
@@ -157,8 +166,10 @@ def atualizaOsTreco():
 
     while True:
         if rootTroca != None:
-            rootTroca.atualizaGraficoABEV3(a)
-            rootTroca.atualizaGraficoMGLU3()
+            rootTroca.atualizaGraficoABEV3(abev3)
+            rootTroca.atualizaGraficoMGLU3(mglu3)
+            rootTroca.atualizaGraficoPETR4(petr4)
+            rootTroca.atualizaGraficoITUB4(it)
             time.sleep(300)
 
 
