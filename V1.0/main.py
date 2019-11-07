@@ -91,8 +91,11 @@ class Program():
         tk.Radiobutton(root, text="Volume                         ", padx=0, variable=metrITUB4, value=2, bg="white").place(x=672, y=618)
         tk.Radiobutton(root, text="Banda de Bollinger       ", padx=0, variable=metrITUB4, value=3, bg="white").place(x=672,y=640)
         tk.Radiobutton(root, text="Fechamento                  ", padx=0, variable=metrITUB4, value=4, bg="white").place(x=672,y=662)
-        tk.Radiobutton(root, text="Sem indicador               ", padx=0, variable=metrITUB4, value=5,bg="white").place(x=672, y=684)
+        tk.Radiobutton(root, text="Sem indicador               ", padx=0,command=estado("sem metrica") variable=metrITUB4, value=5,bg="white").place(x=672, y=684)
 
+        def estado(self,metrica):
+            if metrica == "BB":
+                a = "BB"
         buyABEV = tk.Button(root, text="COMPRAR ABEV3", width=15, height=0).place(x=870, y=566)
         sellABEV = tk.Button(root, text="VENDER ABEV3", width=15, height=0).place(x=870, y=600)
 
@@ -106,25 +109,28 @@ class Program():
         sellITUB4 = tk.Button(root, text="VENDER ITUB4", width=15, height=0).place(x=1050, y=684)
 
 
-    def atualizaGrafico(self):
-        load = Image.open("images/ABEV3.png")
-        render = ImageTk.PhotoImage(load)
-        graph1 = Label(root, image=render)
-        graph1.image = render
-        graph1.place(x=39, y=-25)
+    def atualizaGraficoABEV3(self,metrica):
+            load = Image.open("images/ABEV3.png")
+            render = ImageTk.PhotoImage(load)
+            graph1 = Label(root, image=render)
+            graph1.image = render
+            graph1.place(x=39, y=-25)
 
+    def atualizaGraficoITUB4(self, metrica):
         load2 = Image.open("images/ITUB4.png")
         render = ImageTk.PhotoImage(load2)
         graph1 = Label(root, image=render)
         graph1.image = render
         graph1.place(x=639, y=-25)
 
+    def atualizaGraficoMGLU3(self, metrica):
         load3 = Image.open("images/MGLU3.png")
         render = ImageTk.PhotoImage(load3)
         graph1 = Label(root, image=render)
         graph1.image = render
         graph1.place(x=39, y=261)
 
+    def atualizaGraficoPETR4(self, metrica):
         load4 = Image.open("images/PETR4.png")
         render = ImageTk.PhotoImage(load4)
         graph1 = Label(root, image=render)
@@ -151,7 +157,8 @@ def atualizaOsTreco():
 
     while True:
         if rootTroca != None:
-            rootTroca.atualizaGrafico()
+            rootTroca.atualizaGraficoABEV3(a)
+            rootTroca.atualizaGraficoMGLU3()
             time.sleep(300)
 
 
