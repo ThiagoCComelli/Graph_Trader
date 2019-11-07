@@ -1,12 +1,14 @@
 from tkinter import *
 import tkinter as tk
-<<<<<<< HEAD
 import time
 import threading
 from PIL import Image, ImageTk
-=======
 from PIL import ImageTk,Image
->>>>>>> origin/master
+import request_http_multiThread3_WORKING_COMPACT
+from request_http_multiThread3_WORKING_COMPACT import *
+
+root = None
+rootTroca = None
 
 class Program():
     def __init__(self,master):
@@ -57,12 +59,11 @@ class Program():
         metrPETR4 = tk.IntVar()
 
 
-<<<<<<< HEAD
         stocks = [("Médias Móveis", 1), ("Volume", 2), ("Banda de Bollinger", 3), ("Fechamento", 4), ("Sem indicador", 5)]
-=======
-        self.photo = PhotoImage(file="images/c0books_read.jpeg")
-        self.backlabel = Label(self.frame0, image=self.photo).place(x=-1, y=-1)
->>>>>>> origin/master
+        # self.photo = PhotoImage(file="images/ITUB4.png")
+        # self.backlabel = Label(root, image=self.photo).place(x=-1, y=-1)
+        # self.photo = PhotoImage(file="images/c0books_read.jpeg")
+        # self.backlabel = Label(self.frame0, image=self.photo).place(x=-1, y=-1)
 
         # metricas ABEV3
         tk.Radiobutton(root, text="Médias Móveis             ", padx=0, variable=metrABEV3, value=1, bg="white").place(x=39, y=596)
@@ -130,31 +131,36 @@ class Program():
         graph1.image = render
         graph1.place(x=639, y=261)
 
-        def bolsolindo(self):
-            print("MORAUM 2022")
+    def bolsolindo(self):
+        print("MORAUM 2022")
 
 def iniciar():
+    global root
+    global rootTroca
+    global ABEV3, MGLU3, PETR4, ITUB4
 
-    print("1")
+    print("oi")
+    time.sleep(7)
+    print("aqui")
+
     root = tk.Tk()
-    print("2")
     Program(root)
-    print("3")
+    rootTroca = Program(root)
     root.mainloop()
 
-# def biroliro():
-#     global root
-#     while True:
-#         if root != None:
-#             print('oi8')
-#
-#             root.atualizaGrafico()
-#             print('7oi')
-#
-#         time.sleep(10)
-#         print('oi')
+
+def atualizaOsTreco():
+    global rootTroca
+
+    while True:
+        if rootTroca != None:
+            rootTroca.atualizaGrafico()
+            time.sleep(295)
+
 
 thread1 = threading.Thread(target=iniciar)
 thread1.start()
-# thread2 = threading.Thread(target=biroliro)
-# thread2.start()
+
+thread2 = threading.Thread(target=atualizaOsTreco)
+thread2.start()
+
