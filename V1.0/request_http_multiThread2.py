@@ -121,7 +121,6 @@ def petr4():
 
         time.sleep(295)
 
-
 thread1 = threading.Thread(target=abev3)
 thread1.start()
 

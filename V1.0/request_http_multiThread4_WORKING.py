@@ -109,4 +109,3 @@ thread3.start()
 thread4 = threading.Thread(target=itub4)
 thread4.start()
 
-

@@ -68,7 +68,6 @@ def atualizaRequest():
 
         time.sleep(295)
 
-
 # thread1 = threading.Thread(target=gerador)
 # thread1.start()
 

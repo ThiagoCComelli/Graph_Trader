@@ -91,7 +91,6 @@ def atualiza(stonks):
 #         print(ITUB4T)
 #         time.sleep(1)
 
-
 thread1 = threading.Thread(target=atualiza,args=("ABEV3",))
 thread1.start()
 
