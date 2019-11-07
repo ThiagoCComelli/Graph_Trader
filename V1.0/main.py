@@ -95,7 +95,7 @@ class Program():
 
         def estado(self,metrica):
             if metrica == "BB":
-                a = "BB"
+                a = "BBa"
         buyABEV = tk.Button(root, text="COMPRAR ABEV3", width=15, height=0).place(x=870, y=566)
         sellABEV = tk.Button(root, text="VENDER ABEV3", width=15, height=0).place(x=870, y=600)
 
