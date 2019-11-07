@@ -131,9 +131,6 @@ class Program():
         graph1.image = render
         graph1.place(x=639, y=261)
 
-    def bolsolindo(self):
-        print("MORAUM 2022")
-
 def iniciar():
     global root
     global rootTroca
@@ -155,7 +152,7 @@ def atualizaOsTreco():
     while True:
         if rootTroca != None:
             rootTroca.atualizaGrafico()
-            time.sleep(295)
+            time.sleep(300)
 
 
 thread1 = threading.Thread(target=iniciar)

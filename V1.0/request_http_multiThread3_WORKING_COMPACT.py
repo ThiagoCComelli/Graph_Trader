@@ -49,6 +49,7 @@ def gerador():
 
                 print("gerador {} =>           ".format(krl) + str(open))
 
+                plt.figure(num=None, figsize=(6, 2.85), dpi=100, facecolor='w', edgecolor='k')
                 plt.plot(valor, open[::-1])
                 plt.savefig('images/' + krl + '.png')
                 plt.show()
