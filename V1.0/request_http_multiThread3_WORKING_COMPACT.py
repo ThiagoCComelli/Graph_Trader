@@ -8,10 +8,12 @@ from datetime import datetime
 
 tot = 0
 ABEV3 = MGLU3 = PETR4 = ITUB4 = None
+ABEV3T = MGLU3T = PETR4T = ITUB4T = None
 
 def gerador():
     while True:
         global tot, ABEV3, MGLU3, PETR4, ITUB4
+        global ABEV3T, MGLU3T, PETR4T, ITUB4T
         lista = []
 
         while True:
@@ -48,7 +50,7 @@ def gerador():
                 print("gerador {} =>           ".format(krl) + str(open))
 
                 plt.plot(valor, open[::-1])
-                plt.savefig('images/' + krl + "_" + str(tot) + '_' + str(tot) + '.png')
+                plt.savefig('images/' + krl + '.png')
                 plt.show()
 
                 tot += 1
@@ -58,22 +60,37 @@ def gerador():
 
 def atualiza(stonks):
     global ABEV3, MGLU3, PETR4, ITUB4
+    global ABEV3T, MGLU3T, PETR4T, ITUB4T
 
     while True:
         if stonks == "ABEV3":
             if ABEV3 == None:
                 ABEV3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ABEV3.SA&interval=5min&apikey=234234")
+                ABEV3T = ABEV3
         elif stonks == "MGLU3":
             if MGLU3 == None:
                 MGLU3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MGLU3.SA&interval=5min&apikey=234234")
+                MGLU3T = MGLU3
         elif stonks == "ITUB4":
             if ITUB4 == None:
                 ITUB4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ITUB4.SA&interval=5min&apikey=234234")
+                ITUB4T = ITUB4
         elif stonks == "PETR4":
             if ITUB4 == None:
                 PETR4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=5min&apikey=234234")
+                PETR4T = PETR4
         if (ABEV3 != None) and (MGLU3 != None) and (PETR4 != None) and (ITUB4 != None):
             time.sleep(295)
+
+# def queroDormir():
+#     global ABEV3T, MGLU3T, PETR4T, ITUB4T
+#     global ABEV3, MGLU3, PETR4, ITUB4
+#
+#     while True:
+#         print(ITUB4)
+#         print(ITUB4T)
+#         time.sleep(1)
+
 
 thread1 = threading.Thread(target=atualiza,args=("ABEV3",))
 thread1.start()
@@ -89,4 +106,7 @@ thread4.start()
 
 thread5 = threading.Thread(target=gerador)
 thread5.start()
+
+# thread6 = threading.Thread(target=queroDormir)
+# thread6.start()
 
