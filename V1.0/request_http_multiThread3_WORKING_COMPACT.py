@@ -25,11 +25,7 @@ def gerador():
                 data = i.json()
                 now = datetime.now()
 
-                # POR ALGUM KRL DE MOTIVOS ELE DA ERRO AQUI ALGUMAS VEZES, É ALEATORIO
-
-                # START OF DANGER ZONE - WARNING
                 timeSeries = data['Time Series (5min)']
-                # END OF DANGER ZONE - WARNING
 
                 open = [float(dado["1. open"]) for dado in timeSeries.values()]
                 high = [float(dado["2. high"]) for dado in timeSeries.values()]
@@ -39,7 +35,7 @@ def gerador():
                 for u in range(len(open)):
                     valor.append(u)
 
-                plt.figure(num=None, figsize=(6, 2.85), dpi=100, facecolor='w', edgecolor='k')
+                plt.figure(num=None, figsize=(6, 2.6), dpi=100, facecolor='w', edgecolor='white')
 
                 if lista.index(i) == 0:
                     stock = "ABEV3"
@@ -97,9 +93,8 @@ def gerador():
                     plt.plot(valor, volume[::-1])
                     plt.savefig('images/ITUB4/' + stock + "volume" + '.png')
                     plt.clf()
-
+                plt.close()
             break
-
         ABEV3 = MGLU3 = PETR4 = ITUB4 = None
 
 def atualiza(stonks):

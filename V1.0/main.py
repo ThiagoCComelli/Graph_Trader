@@ -19,10 +19,9 @@ class Program():
 
     def screen(self):
         global abev3,itub4,mglu3,petr4
-        # frame 0 = top-left
-        # frame 1 = top-right
-        # frame 2 = botton-left
-        # frame 3 = botton-right
+        self.frame0 = tk.Frame(root, width=1280, height=720, bg='white')
+        self.frame0.place(x=0, y=0)
+
 
         root.configure(background="white")
         self.atualizaGraficoABEV3(abev3)
@@ -79,6 +78,40 @@ class Program():
         buyITUB4 = tk.Button(root, text="COMPRAR ITUB4", width=15, height=0).place(x=1050, y=650)
         sellITUB4 = tk.Button(root, text="VENDER ITUB4", width=15, height=0).place(x=1050, y=684)
 
+        #marcacoes dos graficos
+        self.labelABEV3 = tk.Label(root)
+        self.labelABEV3.configure(text='ABEV3', font="Times 15 bold", fg="black", bg="white")
+        self.labelABEV3.place(x=300, y=18)
+
+        self.labelITUB4 = tk.Label(root)
+        self.labelITUB4.configure(text='ITUB4', font="Times 15 bold", fg="black", bg="white")
+        self.labelITUB4.place(x=910, y=18)
+
+        self.labelMGLU3 = tk.Label(root)
+        self.labelMGLU3.configure(text='MGLU3', font="Times 15 bold", fg="black", bg="white")
+        self.labelMGLU3.place(x=300, y=280)
+
+        self.labelPETR4 = tk.Label(root)
+        self.labelPETR4.configure(text='PETR4', font="Times 15 bold", fg="black", bg="white")
+        self.labelPETR4.place(x=910, y=280)
+
+        #marcacoes das medias
+        self.labelABEV3 = tk.Label(root)
+        self.labelABEV3.configure(text='ABEV3:', font="Times 12 bold", fg="black", bg="white")
+        self.labelABEV3.place(x=39, y=572)
+
+        self.labelITUB4 = tk.Label(root)
+        self.labelITUB4.configure(text='ITUB4:', font="Times 12 bold", fg="black", bg="white")
+        self.labelITUB4.place(x=250, y=572)
+
+        self.labelMGLU3 = tk.Label(root)
+        self.labelMGLU3.configure(text='MGLU3:', font="Times 12 bold", fg="black", bg="white")
+        self.labelMGLU3.place(x=461, y=572)
+
+        self.labelPETR4 = tk.Label(root)
+        self.labelPETR4.configure(text='PETR4:', font="Times 12 bold", fg="black", bg="white")
+        self.labelPETR4.place(x=672, y=572)
+
 
     def atualizaGraficoABEV3(self,metrica):
         global abev3
@@ -99,9 +132,9 @@ class Program():
             load = Image.open("images/ABEV3/ABEV3open.png")
 
         render = ImageTk.PhotoImage(load)
-        graph1 = Label(root, image=render)
+        graph1 = Label(self.frame0, image=render)
         graph1.image = render
-        graph1.place(x=39, y=-25)
+        graph1.place(x=39, y=15)
 
     def atualizaGraficoITUB4(self, metrica):
         global itub4
@@ -121,9 +154,9 @@ class Program():
             itub4 = "media"
             load2 = Image.open("images/ITUB4/ITUB4open.png")
         render = ImageTk.PhotoImage(load2)
-        graph1 = Label(root, image=render)
+        graph1 = Label(self.frame0, image=render)
         graph1.image = render
-        graph1.place(x=639, y=-25)
+        graph1.place(x=639, y=15)
 
     def atualizaGraficoMGLU3(self, metrica):
         global mglu3
@@ -143,9 +176,9 @@ class Program():
             mglu3 = "media"
             load3 = Image.open("images/MGLU3/MGLU3open.png")
         render = ImageTk.PhotoImage(load3)
-        graph1 = Label(root, image=render)
+        graph1 = Label(self.frame0, image=render)
         graph1.image = render
-        graph1.place(x=39, y=261)
+        graph1.place(x=39, y=277)
 
     def atualizaGraficoPETR4(self, metrica):
         global petr4
@@ -165,16 +198,16 @@ class Program():
             petr4 = "media"
             load4 = Image.open("images/PETR4/PETR4open.png")
         render = ImageTk.PhotoImage(load4)
-        graph1 = Label(root, image=render)
+        graph1 = Label(self.frame0, image=render)
         graph1.image = render
-        graph1.place(x=639, y=261)
+        graph1.place(x=639, y=277)
 
 def iniciar():
     global root
     global rootTroca
     global ABEV3, MGLU3, PETR4, ITUB4
 
-    time.sleep(10)
+    # time.sleep(10)
 
     root = tk.Tk()
     Program(root)
