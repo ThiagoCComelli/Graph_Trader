@@ -12,6 +12,11 @@ rootTroca = None
 
 abev3 = itub4 = mglu3 = petr4 = "sem id"
 
+
+bollinger e medias moveis tem pronta no alpha vantage, coletar e fazer os graficos
+
+
+
 class Program():
     def __init__(self,master):
         self.root = root.geometry("1280x720"), root.resizable(width=False, height=False)
@@ -39,32 +44,32 @@ class Program():
         stocks = [("Médias Móveis", 1), ("Volume", 2), ("Banda de Bollinger", 3), ("Fechamento", 4), ("Sem indicador", 5)]
 
         # metricas ABEV3
-        tk.Radiobutton(root, text="Médias Móveis             ", padx=0, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("sem id"),value=1, bg="white").place(x=39, y=596)
-        tk.Radiobutton(root, text="Volume                         ", padx=0, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("volume"), value=2, bg="white").place(x=39, y=618)
-        tk.Radiobutton(root, text="Banda de Bollinger       ", padx=0, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("sem id"), value=3, bg="white").place(x=39, y=640)
-        tk.Radiobutton(root, text="Fechamento                  ", padx=0, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("fechamento"), value=4, bg="white").place(x=39, y=662)
-        tk.Radiobutton(root, text="Sem indicador               ", padx=0, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("sem id"), value=5,bg="white").place(x=39, y=684)
+        tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("sem id"),value=1, bg="white").place(x=39, y=596)
+        tk.Radiobutton(root, text="Volume", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("volume"), value=2, bg="white").place(x=39, y=618)
+        tk.Radiobutton(root, text="Abertura", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("abertura"), value=3, bg="white").place(x=39, y=640)
+        tk.Radiobutton(root, text="Fechamento", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("fechamento"), value=4, bg="white").place(x=39, y=662)
+        tk.Radiobutton(root, text="Metricas Juntas", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("sem id"), value=5,bg="white").place(x=39, y=684)
 
         # metricas MGLU3
-        tk.Radiobutton(root, text="Médias Móveis             ", padx=0, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("sem id"), value=1, bg="white").place(x=250, y=596)
-        tk.Radiobutton(root, text="Volume                         ", padx=0, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("volume"), value=2, bg="white").place(x=250, y=618)
-        tk.Radiobutton(root, text="Banda de Bollinger       ", padx=0, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("sem id"), value=3, bg="white").place(x=250, y=640)
-        tk.Radiobutton(root, text="Fechamento                  ", padx=0, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("fechamento"), value=4, bg="white").place(x=250, y=662)
-        tk.Radiobutton(root, text="Sem indicador               ", padx=0, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("sem id"), value=5,bg="white").place(x=250, y=684)
+        tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("sem id"), value=1, bg="white").place(x=250, y=596)
+        tk.Radiobutton(root, text="Volume", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("volume"), value=2, bg="white").place(x=250, y=618)
+        tk.Radiobutton(root, text="Abertura", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("abertura"), value=3, bg="white").place(x=250, y=640)
+        tk.Radiobutton(root, text="Fechamento", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("fechamento"), value=4, bg="white").place(x=250, y=662)
+        tk.Radiobutton(root, text="Metricas Juntas", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("sem id"), value=5,bg="white").place(x=250, y=684)
 
         # metricas PETR4
-        tk.Radiobutton(root, text="Médias Móveis             ", padx=0, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("sem id"), value=1, bg="white").place(x=461,y=596)
-        tk.Radiobutton(root, text="Volume                         ", padx=0, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("volume"), value=2, bg="white").place(x=461, y=618)
-        tk.Radiobutton(root, text="Banda de Bollinger       ", padx=0, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("sem id"), value=3, bg="white").place(x=461,y=640)
-        tk.Radiobutton(root, text="Fechamento                  ", padx=0, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("fechamento"), value=4, bg="white").place(x=461,y=662)
-        tk.Radiobutton(root, text="Sem indicador               ", padx=0, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("sem id"), value=5,bg="white").place(x=461, y=684)
+        tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("sem id"), value=1, bg="white").place(x=461,y=596)
+        tk.Radiobutton(root, text="Volume", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("volume"), value=2, bg="white").place(x=461, y=618)
+        tk.Radiobutton(root, text="Abertura", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("abertura"), value=3, bg="white").place(x=461,y=640)
+        tk.Radiobutton(root, text="Fechamento", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("fechamento"), value=4, bg="white").place(x=461,y=662)
+        tk.Radiobutton(root, text="Metricas Juntas", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("sem id"), value=5,bg="white").place(x=461, y=684)
 
         # metricas ITUB4
-        tk.Radiobutton(root, text="Médias Móveis             ", padx=0, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("sem id"), value=1, bg="white").place(x=672,y=596)
-        tk.Radiobutton(root, text="Volume                         ", padx=0, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("volume"), value=2, bg="white").place(x=672, y=618)
-        tk.Radiobutton(root, text="Banda de Bollinger       ", padx=0, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("sem id"), value=3, bg="white").place(x=672,y=640)
-        tk.Radiobutton(root, text="Fechamento                  ", padx=0, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("fechamento"), value=4, bg="white").place(x=672,y=662)
-        tk.Radiobutton(root, text="Sem indicador               ", padx=0,variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("sem id"), value=5,bg="white").place(x=672, y=684)
+        tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("sem id"), value=1, bg="white").place(x=672,y=596)
+        tk.Radiobutton(root, text="Volume", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("volume"), value=2, bg="white").place(x=672, y=618)
+        tk.Radiobutton(root, text="Abertura", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("abertura"), value=3, bg="white").place(x=672,y=640)
+        tk.Radiobutton(root, text="Fechamento", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("fechamento"), value=4, bg="white").place(x=672,y=662)
+        tk.Radiobutton(root, text="Metricas Juntas", padx=0,width=20,variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("sem id"), value=5,bg="white").place(x=672, y=684)
 
         buyABEV = tk.Button(root, text="COMPRAR ABEV3", width=15, height=0).place(x=870, y=566)
         sellABEV = tk.Button(root, text="VENDER ABEV3", width=15, height=0).place(x=870, y=600)
@@ -101,15 +106,15 @@ class Program():
         self.labelABEV3.place(x=39, y=572)
 
         self.labelITUB4 = tk.Label(root)
-        self.labelITUB4.configure(text='ITUB4:', font="Times 12 bold", fg="black", bg="white")
+        self.labelITUB4.configure(text='MGLU3:', font="Times 12 bold", fg="black", bg="white")
         self.labelITUB4.place(x=250, y=572)
 
         self.labelMGLU3 = tk.Label(root)
-        self.labelMGLU3.configure(text='MGLU3:', font="Times 12 bold", fg="black", bg="white")
+        self.labelMGLU3.configure(text='PETR4:', font="Times 12 bold", fg="black", bg="white")
         self.labelMGLU3.place(x=461, y=572)
 
         self.labelPETR4 = tk.Label(root)
-        self.labelPETR4.configure(text='PETR4:', font="Times 12 bold", fg="black", bg="white")
+        self.labelPETR4.configure(text='ITUB4:', font="Times 12 bold", fg="black", bg="white")
         self.labelPETR4.place(x=672, y=572)
 
 
@@ -117,9 +122,9 @@ class Program():
         global abev3
         if metrica == "sem id":
             abev3 = "sem id"
-            load = Image.open("images/ABEV3/ABEV3open.png")
-        elif metrica == "boolinger":
-            abev3 = "boolinger"
+            load = Image.open("images/ABEV3/ABEV3semid.png")
+        elif metrica == "abertura":
+            abev3 = "abertura"
             load = Image.open("images/ABEV3/ABEV3open.png")
         elif metrica == "volume":
             abev3 = "volume"
@@ -129,7 +134,7 @@ class Program():
             load = Image.open("images/ABEV3/ABEV3close.png")
         elif metrica == "media":
             abev3 = "media"
-            load = Image.open("images/ABEV3/ABEV3open.png")
+            load = Image.open("images/ABEV3/ABEV3semid.png")
 
         render = ImageTk.PhotoImage(load)
         graph1 = Label(self.frame0, image=render)
@@ -140,9 +145,9 @@ class Program():
         global itub4
         if metrica == "sem id":
             itub4 = "sem id"
-            load2 = Image.open("images/ITUB4/ITUB4open.png")
-        elif metrica == "boolinger":
-            itub4 = "boolinger"
+            load2 = Image.open("images/ITUB4/ITUB4semid.png")
+        elif metrica == "abertura":
+            itub4 = "abertura"
             load2 = Image.open("images/ITUB4/ITUB4open.png")
         elif metrica == "volume":
             itub4 = "volume"
@@ -152,7 +157,7 @@ class Program():
             load2 = Image.open("images/ITUB4/ITUB4close.png")
         elif metrica == "media":
             itub4 = "media"
-            load2 = Image.open("images/ITUB4/ITUB4open.png")
+            load2 = Image.open("images/ITUB4/ITUB4semid.png")
         render = ImageTk.PhotoImage(load2)
         graph1 = Label(self.frame0, image=render)
         graph1.image = render
@@ -162,9 +167,9 @@ class Program():
         global mglu3
         if metrica == "sem id":
             mglu3 = "sem id"
-            load3 = Image.open("images/MGLU3/MGLU3open.png")
-        elif metrica == "boolinger":
-            mglu3 = "boolinger"
+            load3 = Image.open("images/MGLU3/MGLU3semid.png")
+        elif metrica == "abertura":
+            mglu3 = "abertura"
             load3 = Image.open("images/MGLU3/MGLU3open.png")
         elif metrica == "volume":
             mglu3 = "volume"
@@ -174,7 +179,7 @@ class Program():
             load3 = Image.open("images/MGLU3/MGLU3close.png")
         elif metrica == "media":
             mglu3 = "media"
-            load3 = Image.open("images/MGLU3/MGLU3open.png")
+            load3 = Image.open("images/MGLU3/MGLU3semid.png")
         render = ImageTk.PhotoImage(load3)
         graph1 = Label(self.frame0, image=render)
         graph1.image = render
@@ -184,9 +189,9 @@ class Program():
         global petr4
         if metrica == "sem id":
             petr4 = "sem id"
-            load4 = Image.open("images/PETR4/PETR4open.png")
-        elif metrica == "boolinger":
-            petr4 = "boolinger"
+            load4 = Image.open("images/PETR4/PETR4semid.png")
+        elif metrica == "abertura":
+            petr4 = "abertura"
             load4 = Image.open("images/PETR4/PETR4open.png")
         elif metrica == "volume":
             petr4 = "volume"
@@ -196,7 +201,7 @@ class Program():
             load4 = Image.open("images/PETR4/PETR4close.png")
         elif metrica == "media":
             petr4 = "media"
-            load4 = Image.open("images/PETR4/PETR4open.png")
+            load4 = Image.open("images/PETR4/PETR4semid.png")
         render = ImageTk.PhotoImage(load4)
         graph1 = Label(self.frame0, image=render)
         graph1.image = render

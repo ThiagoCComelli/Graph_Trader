@@ -48,8 +48,14 @@ def gerador():
                     plt.plot(valor, close[::-1])
                     plt.savefig('images/ABEV3/' + stock + "close" + '.png')
                     plt.clf()
-                    plt.plot(valor, volume[::-1])
+                    plt.bar(valor, volume[::-1])
                     plt.savefig('images/ABEV3/' + stock + "volume" + '.png')
+                    plt.clf()
+
+                    plt.plot(valor, open[::-1])
+                    plt.plot(valor, high[::-1])
+                    plt.plot(valor, close[::-1])
+                    plt.savefig('images/ABEV3/' + stock + "semid" + '.png')
                     plt.clf()
                 elif lista.index(i) == 1:
                     stock = "MGLU3"
@@ -62,8 +68,14 @@ def gerador():
                     plt.plot(valor, close[::-1])
                     plt.savefig('images/MGLU3/' + stock + "close" + '.png')
                     plt.clf()
-                    plt.plot(valor, volume[::-1])
+                    plt.bar(valor, volume[::-1])
                     plt.savefig('images/MGLU3/' + stock + "volume" + '.png')
+                    plt.clf()
+
+                    plt.plot(valor, open[::-1])
+                    plt.plot(valor, high[::-1])
+                    plt.plot(valor, close[::-1])
+                    plt.savefig('images/MGLU3/' + stock + "semid" + '.png')
                     plt.clf()
                 elif lista.index(i) == 2:
                     stock = "PETR4"
@@ -76,8 +88,14 @@ def gerador():
                     plt.plot(valor, close[::-1])
                     plt.savefig('images/PETR4/' + stock + "close" + '.png')
                     plt.clf()
-                    plt.plot(valor, volume[::-1])
+                    plt.bar(valor, volume[::-1])
                     plt.savefig('images/PETR4/' + stock + "volume" + '.png')
+                    plt.clf()
+
+                    plt.plot(valor, open[::-1])
+                    plt.plot(valor, high[::-1])
+                    plt.plot(valor, close[::-1])
+                    plt.savefig('images/PETR4/' + stock + "semid" + '.png')
                     plt.clf()
                 else:
                     stock = "ITUB4"
@@ -90,9 +108,16 @@ def gerador():
                     plt.plot(valor, close[::-1])
                     plt.savefig('images/ITUB4/' + stock + "close" + '.png')
                     plt.clf()
-                    plt.plot(valor, volume[::-1])
+                    plt.bar(valor, volume[::-1])
                     plt.savefig('images/ITUB4/' + stock + "volume" + '.png')
                     plt.clf()
+
+                    plt.plot(valor, open[::-1])
+                    plt.plot(valor, high[::-1])
+                    plt.plot(valor, close[::-1])
+                    plt.savefig('images/ITUB4/' + stock + "semid" + '.png')
+                    plt.clf()
+
                 plt.close()
             break
         ABEV3 = MGLU3 = PETR4 = ITUB4 = None
