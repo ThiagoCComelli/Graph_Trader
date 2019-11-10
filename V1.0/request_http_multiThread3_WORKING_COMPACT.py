@@ -32,6 +32,7 @@ def gerador():
                 close = [float(dado["4. close"]) for dado in timeSeries.values()]
                 volume = [float(dado["5. volume"]) for dado in timeSeries.values()]
 
+
                 for u in range(len(open)):
                     valor.append(u)
 
@@ -128,16 +129,16 @@ def atualiza(stonks):
     while True:
         if stonks == "ABEV3":
             if ABEV3 == None:
-                ABEV3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ABEV3.SA&interval=5min&apikey=234234")
+                ABEV3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ABEV3.SA&interval=5min&apikey=YCIKY19UTT1SRPOA")
         elif stonks == "MGLU3":
             if MGLU3 == None:
-                MGLU3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MGLU3.SA&interval=5min&apikey=234234")
+                MGLU3 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MGLU3.SA&interval=5min&apikey=YCIKY19UTT1SRPOA")
         elif stonks == "ITUB4":
             if ITUB4 == None:
-                ITUB4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ITUB4.SA&interval=5min&apikey=234234")
+                ITUB4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=ITUB4.SA&interval=5min&apikey=YCIKY19UTT1SRPOA")
         elif stonks == "PETR4":
             if PETR4 == None:
-                PETR4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=5min&apikey=234234")
+                PETR4 = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=PETR4.SA&interval=5min&apikey=YCIKY19UTT1SRPOA")
         if (ABEV3 != None) and (MGLU3 != None) and (PETR4 != None) and (ITUB4 != None):
             print("SUCCESS")
             time.sleep(295)
