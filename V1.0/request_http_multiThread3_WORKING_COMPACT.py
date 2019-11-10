@@ -143,15 +143,6 @@ def atualiza(stonks):
             print("SUCCESS")
             time.sleep(295)
 
-# def queroDormir():
-#     global ABEV3T, MGLU3T, PETR4T, ITUB4T
-#     global ABEV3, MGLU3, PETR4, ITUB4
-#
-#     while True:
-#         print(ITUB4)
-#         print(ITUB4T)
-#         time.sleep(1)
-
 thread1 = threading.Thread(target=atualiza,args=("ABEV3",))
 thread1.start()
 
