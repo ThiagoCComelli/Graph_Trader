@@ -7,7 +7,6 @@ import threading
 from datetime import datetime
 from PIL import ImageTk,Image,ImageDraw, ImageFont
 
-
 tot = 0
 ABEV3 = MGLU3 = PETR4 = ITUB4 = None
 ABEV3SMA = MGLU3SMA = PETR4SMA = ITUB4SMA = None
@@ -35,116 +34,59 @@ def gerador():
                 now = datetime.now()
 
                 timeSeries = data['Time Series (5min)']
+                nomeDeArquivo = data['Meta data']
+                nomeDeArquivo1 = nomeDeArquivo['3. Last Refreshed']
 
                 open = [float(dado["1. open"]) for dado in timeSeries.values()]
                 high = [float(dado["2. high"]) for dado in timeSeries.values()]
                 close = [float(dado["4. close"]) for dado in timeSeries.values()]
                 volume = [float(dado["5. volume"]) for dado in timeSeries.values()]
 
-
-
-
                 for u in range(len(open)):
                     valor.append(u)
 
-                plt.figure(num=None, figsize=(6, 2.6), dpi=100, facecolor='w', edgecolor='white')
-
                 if lista.index(i) == 0:
                     stock = "ABEV3"
-                    plt.plot(valor, open[::-1])
-                    plt.savefig('images/ABEV3/' + stock + "open" + '.png')
-                    plt.clf()
-                    plt.plot(valor, high[::-1])
-                    plt.savefig('images/ABEV3/' + stock + "high" + '.png')
-                    plt.clf()
-                    plt.plot(valor, close[::-1])
-                    plt.savefig('images/ABEV3/' + stock + "close" + '.png')
-                    plt.clf()
-                    plt.bar(valor, volume[::-1])
-                    plt.savefig('images/ABEV3/' + stock + "volume" + '.png')
-                    plt.clf()
-
-                    plt.plot(valor, open[::-1])
-                    plt.plot(valor, high[::-1])
-                    plt.plot(valor, close[::-1])
-                    plt.savefig('images/ABEV3/' + stock + "semid" + '.png')
-                    plt.clf()
-
                     ABEV3SMAclose = close[0]
                 elif lista.index(i) == 1:
                     stock = "MGLU3"
-                    plt.plot(valor, open[::-1])
-                    plt.savefig('images/MGLU3/' + stock + "open" + '.png')
-                    plt.clf()
-                    plt.plot(valor, high[::-1])
-                    plt.savefig('images/MGLU3/' + stock + "high" + '.png')
-                    plt.clf()
-                    plt.plot(valor, close[::-1])
-                    plt.savefig('images/MGLU3/' + stock + "close" + '.png')
-                    plt.clf()
-                    plt.bar(valor, volume[::-1])
-                    plt.savefig('images/MGLU3/' + stock + "volume" + '.png')
-                    plt.clf()
-
-                    plt.plot(valor, open[::-1])
-                    plt.plot(valor, high[::-1])
-                    plt.plot(valor, close[::-1])
-                    plt.savefig('images/MGLU3/' + stock + "semid" + '.png')
-                    plt.clf()
-
                     MGLU3SMAclose = close[0]
                 elif lista.index(i) == 2:
                     stock = "PETR4"
-                    plt.plot(valor, open[::-1])
-                    plt.savefig('images/PETR4/' + stock + "open" + '.png')
-                    plt.clf()
-                    plt.plot(valor, high[::-1])
-                    plt.savefig('images/PETR4/' + stock + "high" + '.png')
-                    plt.clf()
-                    plt.plot(valor, close[::-1])
-                    plt.savefig('images/PETR4/' + stock + "close" + '.png')
-                    plt.clf()
-                    plt.bar(valor, volume[::-1])
-                    plt.savefig('images/PETR4/' + stock + "volume" + '.png')
-                    plt.clf()
-
-                    plt.plot(valor, open[::-1])
-                    plt.plot(valor, high[::-1])
-                    plt.plot(valor, close[::-1])
-                    plt.savefig('images/PETR4/' + stock + "semid" + '.png')
-                    plt.clf()
-
                     PETR4SMAclose = close[0]
-                else:
+                elif lista.index(i) == 3:
                     stock = "ITUB4"
-                    plt.plot(valor, open[::-1])
-                    plt.savefig('images/ITUB4/' + stock + "open" + '.png')
-                    plt.clf()
-                    plt.plot(valor, high[::-1])
-                    plt.savefig('images/ITUB4/' + stock + "high" + '.png')
-                    plt.clf()
-                    plt.plot(valor, close[::-1])
-                    plt.savefig('images/ITUB4/' + stock + "close" + '.png')
-                    plt.clf()
-                    plt.bar(valor, volume[::-1])
-                    plt.savefig('images/ITUB4/' + stock + "volume" + '.png')
-                    plt.clf()
-
-                    plt.plot(valor, open[::-1])
-                    plt.plot(valor, high[::-1])
-                    plt.plot(valor, close[::-1])
-                    plt.savefig('images/ITUB4/' + stock + "semid" + '.png')
-                    plt.clf()
-
                     ITUB4SMAclose = close[0]
 
+                plt.figure(num=None, figsize=(6, 2.6), dpi=100, facecolor='w', edgecolor='white')
+
+                plt.plot(valor, open[::-1])
+                plt.savefig('images/{}/'.format(stock) + stock + "open" + '.png')
+                plt.clf()
+                plt.plot(valor, high[::-1])
+                plt.savefig('images/{}/'.format(stock) + stock + "high" + '.png')
+                plt.clf()
+                plt.plot(valor, close[::-1])
+                plt.savefig('images/{}/'.format(stock) + stock + "close" + '.png')
+                plt.clf()
+                plt.bar(valor, volume[::-1])
+                plt.savefig('images/{}/'.format(stock) + stock + "volume" + '.png')
+                plt.clf()
+                plt.plot(valor, open[::-1])
+                plt.plot(valor, high[::-1])
+                plt.plot(valor, close[::-1])
+                plt.savefig('images/{}/'.format(stock) + stock + "semid" + '.png')
+                plt.clf()
                 plt.close()
+
+                geradorText(data, nomeDeArquivo1, stock)
             break
         ABEV3 = MGLU3 = PETR4 = ITUB4 = None
 
 def atualiza(stonks):
     global ABEV3, MGLU3, PETR4, ITUB4
     global ABEV3SMA, MGLU3SMA, PETR4SMA, ITUB4SMA
+
 
     if stonks == "ABEV3" or stonks == "MGLU3" or stonks == "ITUB4" or stonks == "PETR4":
         while True:
@@ -232,6 +174,13 @@ def geradorSMA():
 
     geradorAcao()
 
+def geradorText(text,name,acao):
+    a = str(name[:10]) + "_" + str(name[11:])
+    a = a.replace(":", "-")
+    arq = open("data/{}data/{}_".format(acao,acao) + a + ".txt", "w+")
+    arq.write(str(text))
+    arq.close()
+
 def geradorAcao():
     global tot, ABEV3, MGLU3, PETR4, ITUB4
     global ABEV3SMA, MGLU3SMA, PETR4SMA, ITUB4SMA
@@ -244,7 +193,7 @@ def geradorAcao():
     d = ImageDraw.Draw(img)
     d.text((5, 0), "ABEV3.SA:  {}\nMGLU3.SA: {}\nPETR4.SA:   {}\nITUB4.SA:   {}".format(ABEV3SMAoque,MGLU3SMAoque,PETR4SMAoque,ITUB4SMAoque),font=fnt, fill=(0, 0, 0))
 
-    img.save('oquefazerIMG.png')
+    img.save('images/_OqueFazer/oquefazerIMG.png')
 
 thread1 = threading.Thread(target=atualiza,args=("ABEV3",))
 thread1.start()
@@ -257,7 +206,6 @@ thread3.start()
 
 thread4 = threading.Thread(target=atualiza,args=("PETR4",))
 thread4.start()
-
 
 
 thread6 = threading.Thread(target=atualiza,args=("ABEV3SMA",))
@@ -273,8 +221,5 @@ thread9 = threading.Thread(target=atualiza,args=("PETR4SMA",))
 thread9.start()
 
 
-
 thread5 = threading.Thread(target=gerador)
 thread5.start()
-
-
