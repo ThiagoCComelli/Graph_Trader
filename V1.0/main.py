@@ -11,9 +11,11 @@ root = None
 rootTroca = None
 
 abev3 = itub4 = mglu3 = petr4 = "sem id"
+ABEV3SMA = MGLU3SMA = PETR4SMA = ITUB4SMA = False
+ABEV3SMAR = MGLU3SMAR = PETR4SMAR = ITUB4SMAR = None
 
 
-bollinger e medias moveis tem pronta no alpha vantage, coletar e fazer os graficos
+# bollinger e medias moveis tem pronta no alpha vantage, coletar e fazer os graficos
 
 
 
@@ -44,44 +46,35 @@ class Program():
         stocks = [("Médias Móveis", 1), ("Volume", 2), ("Banda de Bollinger", 3), ("Fechamento", 4), ("Sem indicador", 5)]
 
         # metricas ABEV3
-        tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("sem id"),value=1, bg="white").place(x=39, y=596)
+        # tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("sem id"),value=1, bg="white").place(x=39, y=596)
         tk.Radiobutton(root, text="Volume", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("volume"), value=2, bg="white").place(x=39, y=618)
         tk.Radiobutton(root, text="Abertura", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("abertura"), value=3, bg="white").place(x=39, y=640)
         tk.Radiobutton(root, text="Fechamento", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("fechamento"), value=4, bg="white").place(x=39, y=662)
         tk.Radiobutton(root, text="Metricas Juntas", padx=0,width=20, variable=metrABEV3,command=lambda: self.atualizaGraficoABEV3("sem id"), value=5,bg="white").place(x=39, y=684)
 
         # metricas MGLU3
-        tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("sem id"), value=1, bg="white").place(x=250, y=596)
+        # tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("sem id"), value=1, bg="white").place(x=250, y=596)
         tk.Radiobutton(root, text="Volume", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("volume"), value=2, bg="white").place(x=250, y=618)
         tk.Radiobutton(root, text="Abertura", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("abertura"), value=3, bg="white").place(x=250, y=640)
         tk.Radiobutton(root, text="Fechamento", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("fechamento"), value=4, bg="white").place(x=250, y=662)
         tk.Radiobutton(root, text="Metricas Juntas", padx=0,width=20, variable=metrMGLU3,command=lambda: self.atualizaGraficoMGLU3("sem id"), value=5,bg="white").place(x=250, y=684)
 
         # metricas PETR4
-        tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("sem id"), value=1, bg="white").place(x=461,y=596)
+        # tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("sem id"), value=1, bg="white").place(x=461,y=596)
         tk.Radiobutton(root, text="Volume", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("volume"), value=2, bg="white").place(x=461, y=618)
         tk.Radiobutton(root, text="Abertura", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("abertura"), value=3, bg="white").place(x=461,y=640)
         tk.Radiobutton(root, text="Fechamento", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("fechamento"), value=4, bg="white").place(x=461,y=662)
         tk.Radiobutton(root, text="Metricas Juntas", padx=0,width=20, variable=metrPETR4,command=lambda: self.atualizaGraficoPETR4("sem id"), value=5,bg="white").place(x=461, y=684)
 
         # metricas ITUB4
-        tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("sem id"), value=1, bg="white").place(x=672,y=596)
+        # tk.Radiobutton(root, text="Médias Móveis", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("sem id"), value=1, bg="white").place(x=672,y=596)
         tk.Radiobutton(root, text="Volume", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("volume"), value=2, bg="white").place(x=672, y=618)
         tk.Radiobutton(root, text="Abertura", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("abertura"), value=3, bg="white").place(x=672,y=640)
         tk.Radiobutton(root, text="Fechamento", padx=0,width=20, variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("fechamento"), value=4, bg="white").place(x=672,y=662)
         tk.Radiobutton(root, text="Metricas Juntas", padx=0,width=20,variable=metrITUB4,command=lambda: self.atualizaGraficoITUB4("sem id"), value=5,bg="white").place(x=672, y=684)
 
-        buyABEV = tk.Button(root, text="COMPRAR ABEV3", width=15, height=0).place(x=870, y=566)
-        sellABEV = tk.Button(root, text="VENDER ABEV3", width=15, height=0).place(x=870, y=600)
-
-        buyMGLU = tk.Button(root, text="COMPRAR MGLU3", width=15, height=0).place(x=870, y=650)
-        sellMGLU = tk.Button(root, text="VENDER MGLU3", width=15, height=0).place(x=870, y=684)
-
-        buyPETR4 = tk.Button(root, text="COMPRAR PETR4", width=15, height=0).place(x=1050, y=566)
-        sellPETR4 = tk.Button(root, text="VENDER PETR4", width=15, height=0).place(x=1050, y=600)
-
-        buyITUB4 = tk.Button(root, text="COMPRAR ITUB4", width=15, height=0).place(x=1050, y=650)
-        sellITUB4 = tk.Button(root, text="VENDER ITUB4", width=15, height=0).place(x=1050, y=684)
+        # self.frame1 = tk.Frame(root, width=373, height=120, bg='light gray')
+        # self.frame1.place(x=870, y=566)
 
         #marcacoes dos graficos
         self.labelABEV3 = tk.Label(root)
@@ -117,6 +110,22 @@ class Program():
         self.labelPETR4.configure(text='ITUB4:', font="Times 12 bold", fg="black", bg="white")
         self.labelPETR4.place(x=672, y=572)
 
+        self.oquefazer = tk.Label(root)
+        self.oquefazer.configure(text='OQUE FAZER?', font="Times 12 bold", fg="black", bg="white")
+        self.oquefazer.place(x=900, y=572)
+
+        self.load = Image.open("oquefazerIMG0.png")
+        self.render = ImageTk.PhotoImage(self.load)
+        self.graph1 = Label(root, image=self.render)
+        self.graph1.image = self.render
+        self.graph1.place(x=900, y=600)
+
+    def atualizaAlerta(self):
+        self.load = Image.open("oquefazerIMG.png")
+        self.render = ImageTk.PhotoImage(self.load)
+        self.graph1 = Label(root, image=self.render)
+        self.graph1.image = self.render
+        self.graph1.place(x=900, y=600)
 
     def atualizaGraficoABEV3(self,metrica):
         global abev3
@@ -232,10 +241,20 @@ def atualizaOsTreco():
             rootTroca.atualizaGraficoITUB4(itub4)
             time.sleep(300)
 
+def atualizaAlertaClass():
+    global rootTroca
+    time.sleep(75)
+    while True:
+        rootTroca.atualizaAlerta()
+        time.sleep(295)
 
 thread1 = threading.Thread(target=iniciar)
 thread1.start()
 
 thread2 = threading.Thread(target=atualizaOsTreco)
 thread2.start()
+
+thread3 = threading.Thread(target=atualizaAlertaClass)
+thread3.start()
+
 
