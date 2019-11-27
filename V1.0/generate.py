@@ -34,7 +34,7 @@ def gerador():
                 now = datetime.now()
 
                 timeSeries = data['Time Series (5min)']
-                nomeDeArquivo = data['Meta data']
+                nomeDeArquivo = data['Meta Data']
                 nomeDeArquivo1 = nomeDeArquivo['3. Last Refreshed']
 
                 open = [float(dado["1. open"]) for dado in timeSeries.values()]
