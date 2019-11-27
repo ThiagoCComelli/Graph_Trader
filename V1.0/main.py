@@ -3,9 +3,8 @@ import tkinter as tk
 import time
 import threading
 from PIL import Image, ImageTk
-from PIL import ImageTk,Image
-import request_http_multiThread3_WORKING_COMPACT
-from request_http_multiThread3_WORKING_COMPACT import *
+import generate
+from generate import *
 
 root = None
 rootTroca = None
@@ -13,11 +12,6 @@ rootTroca = None
 abev3 = itub4 = mglu3 = petr4 = "sem id"
 ABEV3SMA = MGLU3SMA = PETR4SMA = ITUB4SMA = False
 ABEV3SMAR = MGLU3SMAR = PETR4SMAR = ITUB4SMAR = None
-
-
-# bollinger e medias moveis tem pronta no alpha vantage, coletar e fazer os graficos
-
-
 
 class Program():
     def __init__(self,master):
@@ -114,14 +108,14 @@ class Program():
         self.oquefazer.configure(text='OQUE FAZER?', font="Times 12 bold", fg="black", bg="white")
         self.oquefazer.place(x=900, y=572)
 
-        self.load = Image.open("oquefazerIMG0.png")
+        self.load = Image.open("images/_OqueFazer/oquefazerIMG0.png")
         self.render = ImageTk.PhotoImage(self.load)
         self.graph1 = Label(root, image=self.render)
         self.graph1.image = self.render
         self.graph1.place(x=900, y=600)
 
     def atualizaAlerta(self):
-        self.load = Image.open("oquefazerIMG.png")
+        self.load = Image.open("images/_OqueFazer/oquefazerIMG.png")
         self.render = ImageTk.PhotoImage(self.load)
         self.graph1 = Label(root, image=self.render)
         self.graph1.image = self.render
@@ -221,13 +215,10 @@ def iniciar():
     global rootTroca
     global ABEV3, MGLU3, PETR4, ITUB4
 
-    # time.sleep(10)
-
     root = tk.Tk()
     Program(root)
     rootTroca = Program(root)
     root.mainloop()
-
 
 def atualizaOsTreco():
     global rootTroca
